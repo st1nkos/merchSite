@@ -1,7 +1,14 @@
 import searchSvg from './assets/search.svg'
-import Card from "./components/Card";
+import Card from "./components/Card/Card";
 import Header from "./components/Header";
 import Drawer from "./components/Drawer";
+import cloath1 from "./assets/clothes/bs043010.jpg"
+import cloath2 from "./assets/clothes/bs04107.jpg"
+
+const arr = [
+    {title: "Черная футболка оверсайз",imageUrl: cloath2, price: 1790},
+    {title: "Черная футболка оверсайз",imageUrl: cloath1, price: 1990},
+]
 
 function App() {
     return (
@@ -17,7 +24,7 @@ function App() {
                     </div>
                 </div>
                 <div className="clothes">
-                    <Card/>
+                    {arr.map((obj) =>(<Card title={obj.title} imageUrl={obj.imageUrl} price={obj.price}  />))}
                 </div>
             </div>
         </div>
