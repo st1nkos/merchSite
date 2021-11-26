@@ -2,7 +2,7 @@ import RoseSvg from "../assets/rose.svg";
 import CartSvg from "../assets/cart.svg";
 import UserSvg from "../assets/user.svg";
 
-const Header = ()=>{
+const Header = (props)=>{
     return(
         <header>
             <div className="headerLeft">
@@ -14,7 +14,7 @@ const Header = ()=>{
             </div>
             <ul className="headerRight">
                 <li>
-                    <img src={CartSvg} alt="logo"/>
+                    <img className='cart' onClick={props.onClickCart} src={CartSvg} alt="logo"/>
                     <span>1790 руб</span>
                 </li>
                 <li>

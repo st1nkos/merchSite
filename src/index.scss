@@ -61,15 +61,21 @@ header {
       margin-right: 30px;
       list-style: none;
     }
+
+    .cart{
+      cursor: pointer;
+    }
+
   }
 }
 
 .content {
-  padding: 40px;
+
+  padding: 20px;
 
   .clothes {
     display: flex;
-
+    flex-wrap: wrap;
   }
 
   .img {
