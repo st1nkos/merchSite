@@ -10,6 +10,8 @@ const Drawer = (props) => {
       <div className="drawerShadow">
           <div className="drawer">
               <h2>Корзина <img onClick={props.onClose} src={deleteSVG} alt=""/></h2>
+
+
               <div className="items">
                   {
                       props.items.map(obj=>(
@@ -20,7 +22,7 @@ const Drawer = (props) => {
                                   <p>{obj.title}</p>
                                   <b>{obj.price} руб</b>
                               </div>
-                              <img className="removeBtn" src={deleteSVG} alt=""/>
+                              <img onClick={()=>props.onRemove(obj.id)} className="removeBtn" src={deleteSVG} alt=""/>
                           </div>
                       ))
                   }

@@ -1,16 +1,23 @@
 import heartUnlikeSvg from "../../assets/heartUnlike.svg";
+import heartLike from "../../assets/heartLike.svg";
 import AddSvg from "../../assets/add.svg";
 import AddConfirmSvg from "../../assets/btn-add.svg";
 import styles from "./Card.module.scss"
 import {useState} from "react";
 
-const Card = ({title,imageUrl,price,onFavoriteClick,onAddClick}) => {
+const Card = ({id,title, imageUrl, price, onFavoriteClick, onAddClick, favorited=false}) => {
 
     const [isAdded, setIsAdded] = useState(false)
+    const [isFavorite, setIsFavorite] = useState(favorited)
 
     const onClickPlus = () => {
-        onAddClick({title,imageUrl,price})
+        onAddClick({title, imageUrl, price})
         setIsAdded(!isAdded)
+    }
+
+    const onClickFavorite = () => {
+        onFavoriteClick({id,title, imageUrl, price})
+        setIsFavorite(!isFavorite)
     }
 
 
@@ -23,8 +30,9 @@ const Card = ({title,imageUrl,price,onFavoriteClick,onAddClick}) => {
                     <span>Цена:</span>
                     <b>{price} руб</b>
                 </div>
-                <div className={styles.favorite} onClick={onFavoriteClick}>
-                    <img src={heartUnlikeSvg} alt="Unliked"/>
+                <div className={styles.favorite}
+                     onClick={onClickFavorite}>
+                    <img src={isFavorite ? heartLike : heartUnlikeSvg} alt="Unliked"/>
                 </div>
                 <img className={styles.plus}
                      onClick={onClickPlus}
