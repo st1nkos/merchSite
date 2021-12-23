@@ -9,8 +9,26 @@ const Home = ({
                   onChangeSearchInput,
                   items,
                   onAddFavorite,
-                  onAddToCart
+                  onAddToCart,
+                  isLoading,
               }) => {
+
+
+    const renderItems = () => {
+
+        return (isLoading
+            ? [...Array(8)]
+            : items.filter(item => item.title.toLowerCase().includes(searchValue.toLowerCase())))
+            .map((item, index) => (<Card
+                key={index}
+                onFavoriteClick={(obj) => onAddFavorite(obj)}
+                onAddClick={(obj) => onAddToCart(obj)}
+                loading={isLoading}
+                {...item}
+            />))
+    }
+
+
     return (
         <div className="content">
             <div className="ContendHeader">
@@ -23,13 +41,7 @@ const Home = ({
                 </div>
             </div>
             <div className="clothes">
-                {items.filter(item => item.title.toLowerCase().includes(searchValue.toLowerCase()))
-                    .map((item, index) => (<Card
-                        key={index}
-                        onFavoriteClick={(obj) => onAddFavorite(obj)}
-                        onAddClick={(obj) => onAddToCart(obj)}
-                        {...item}
-                    />))}
+                {renderItems()}
             </div>
         </div>
     )
